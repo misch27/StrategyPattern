@@ -39,8 +39,9 @@ class CustomUserSort: SortStrategy {
 
 class SortMethods(var sortStrategy: SortStrategy) {
     fun sortWithStrategy(randomList: Array<Int>){
+        val clonedArray = randomList.clone()
         val startTime = LocalDateTime.now()
-        sortStrategy.sortList(randomList.clone())
+        sortStrategy.sortList(clonedArray)
         val endTime = LocalDateTime.now()
         val interval = ChronoUnit.MILLIS.between(startTime, endTime)
         println("Sort ends with $interval millis. Method: ${sortStrategy.strategyName}")
